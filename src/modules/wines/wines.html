@@ -1,0 +1,47 @@
+<md-content>
+
+  <md-toolbar class="md-hue-2">
+    <div class="md-toolbar-tools">
+      <h2 flex md-truncate>Welcome to "The Wine Cellar"</h2>
+
+      <md-button class="md-icon-button" aria-label="Settings" ng-disabled="true">
+      </md-button>
+
+      <md-button class="md-icon-button" aria-label="Favorite">
+      </md-button>
+
+      <md-button class="md-icon-button" aria-label="More">
+      </md-button>
+    </div>
+  </md-toolbar>
+
+
+  <md-card class="ticket-machine" layout="column">
+
+    <md-card-header flex="none">
+      <p>List of wine collection...</p>
+    </md-card-header>
+
+    <md-card-content flex="auto">
+      <form ng-submit="$event.preventDefault()">
+        <md-autocomplete md-no-cache="true" md-delay="100" md-min-length="1" ng-trim="false" md-selected-item="vm.query" md-search-text="vm.query"
+          md-search-text-change="vm.handleSearchChange(vm.query)" md-items="item in vm.searchWines(vm.query)" md-item-text="item.name"
+          placeholder="Search for a wine...">
+          <md-item-template>
+            <span md-highlight-text="vm.query" md-highlight-flags="^i">{{item.name}}</span>
+          </md-item-template>
+          <md-not-found>
+            No wine matching "{{vm.query}}" found...
+          </md-not-found>
+        </md-autocomplete>
+      </form>
+    </md-card-content>
+
+    <md-card-actions flex="none" layout="row" layout-align="end center">
+        <md-button class="md-raised md-warn">Add</md-button>
+    </md-card-actions>
+
+  </md-card>
+
+
+</md-content>
