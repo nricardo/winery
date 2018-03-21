@@ -1,8 +1,8 @@
 import { Component, State, SetModule } from 'ng2now';
 
-import { v1 as uuid } from 'uuid';
+import '../../services/WineService';
 
-SetModule('wines', []);
+SetModule('wines', ['winery.WineService']);
 
 @Component({
   selector: 'wines',
@@ -19,18 +19,18 @@ export class Wines {
   constructor($injector) {
     this.$http = $injector.get('$http');
     this.$timeout = $injector.get('$timeout');
-    this.$window = $injector.get('$window');
+    this.wineService = $injector.get('wineService');
 
     this.load();
   }
 
   load() {
     // load list of wines
-    this.wines = [
-      { id: uuid(), name: 'Wine-1', year: 2002 },
-      { id: uuid(), name: 'Wine-2', year: 2005 },
-      { id: uuid(), name: 'Wine-3', year: 2009 },
-      { id: uuid(), name: 'Wine-4', year: 2012 },
-    ];
+    this.wineService.getWines().then(wines => this.wines = wines);
+  }
+
+  searchWines(query) {
+    query = query || '';
+    return this.wineService.searchWines(query).then(wines => this.wines = wines);
   }
 }

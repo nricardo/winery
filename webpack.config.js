@@ -33,7 +33,7 @@ module.exports = {
   // plugins
   plugins: [
     new CopyWebpackPlugin([
-      { from: 'src/assets', to: 'assets' },
+      // { from: 'src/assets', to: 'assets' },
     ]),
 
     new HtmlWebpackPlugin({

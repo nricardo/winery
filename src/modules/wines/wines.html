@@ -19,7 +19,7 @@
   <md-card class="ticket-machine" layout="column">
 
     <md-card-header flex="none">
-      <p>List of wine collection...</p>
+      <h3>List of wine collection...</h3>
     </md-card-header>
 
     <md-card-content flex="auto">
@@ -35,10 +35,25 @@
           </md-not-found>
         </md-autocomplete>
       </form>
+
+      <md-list flex>
+        <md-subheader class="md-no-sticky">3 line item (with hover)</md-subheader>
+        <md-list-item class="md-2-line" ng-repeat="wine in vm.wines" ng-click="null">
+          <!-- <img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}" /> -->
+          <div class="md-list-item-text" layout="column">
+            <div layout="row" layout-align="space-between center">
+              <h3>{{wine.name}}</h3>
+              <h4>{{wine.year}}</h4>
+            </div>
+            <p>{{wine.description}}</p>
+          </div>
+        </md-list-item>
+      </md-list>
+
     </md-card-content>
 
     <md-card-actions flex="none" layout="row" layout-align="end center">
-        <md-button class="md-raised md-warn">Add</md-button>
+      <md-button class="md-raised md-warn">Add</md-button>
     </md-card-actions>
 
   </md-card>
