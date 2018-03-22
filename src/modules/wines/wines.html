@@ -1,32 +1,15 @@
 <md-content>
 
-  <md-toolbar class="md-hue-2">
-    <div class="md-toolbar-tools">
-      <h2 flex md-truncate>Welcome to "The Wine Cellar"</h2>
-
-      <md-button class="md-icon-button" aria-label="Settings" ng-disabled="true">
-      </md-button>
-
-      <md-button class="md-icon-button" aria-label="Favorite">
-      </md-button>
-
-      <md-button class="md-icon-button" aria-label="More">
-      </md-button>
-    </div>
-  </md-toolbar>
-
-
-  <md-card class="ticket-machine" layout="column">
+  <md-card layout="column">
 
     <md-card-header flex="none">
-      <h3>List of wine collection...</h3>
+      <h3>Wine collection...</h3>
     </md-card-header>
 
     <md-card-content flex="auto">
       <form ng-submit="$event.preventDefault()">
         <md-autocomplete md-no-cache="true" md-delay="100" md-min-length="1" ng-trim="false" md-selected-item="vm.query" md-search-text="vm.query"
-          md-search-text-change="vm.handleSearchChange(vm.query)" md-items="item in vm.searchWines(vm.query)" md-item-text="item.name"
-          placeholder="Search for a wine...">
+          md-items="item in vm.searchWines(vm.query)" md-item-text="item.name" placeholder="Search for a wine...">
           <md-item-template>
             <span md-highlight-text="vm.query" md-highlight-flags="^i">{{item.name}}</span>
           </md-item-template>
@@ -37,9 +20,8 @@
       </form>
 
       <md-list flex>
-        <md-subheader class="md-no-sticky">3 line item (with hover)</md-subheader>
-        <md-list-item class="md-2-line" ng-repeat="wine in vm.wines" ng-click="null">
-          <!-- <img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}" /> -->
+        <md-list-item class="md-2-line" ng-repeat="wine in vm.wines" ng-click="vm.showDetails(wine.id)">
+          <img ng-src="/assets/images/bottle{{wine.img}}.png" class="bottle" alt="{{wine.name}} Image" />
           <div class="md-list-item-text" layout="column">
             <div layout="row" layout-align="space-between center">
               <h3>{{wine.name}}</h3>
@@ -57,6 +39,5 @@
     </md-card-actions>
 
   </md-card>
-
 
 </md-content>

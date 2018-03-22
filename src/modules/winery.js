@@ -1,9 +1,12 @@
 import {Component, SetModule } from 'ng2now';
 
-import 'modules/wines';
+import './wines';
+import './wines/wine';
+
+import '../services/WineService';
 
 // define this module
-SetModule('winery', ['ui.router', 'ngMaterial', 'wines'])
+SetModule('winery', ['ui.router', 'ngMaterial', 'winery.wine', 'winery.wines', 'winery.wineService'])
 .run($rootScope => {
   $rootScope.$on('$stateChangeStart', (event, state) => {
     console.log(event, state);

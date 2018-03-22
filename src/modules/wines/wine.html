@@ -1,0 +1,21 @@
+<md-content>
+
+    <md-card layout="column">
+
+      <md-card-header flex layout="row" layout-align="space-between center">
+        <h3>{{vm.wine.name}}</h3>
+        <span class="year">{{vm.wine.year}}</span>
+      </md-card-header>
+
+      <md-card-content flex="auto" layout="row" layout-align="space-between">
+        <div flex="auto">
+          <p>{{vm.wine.description}}</p>
+        </div>
+
+        <div flex="auto" layout="row" layout-align="end">
+          <img ng-src="/assets/images/bottle{{vm.wine.img}}.png" class="bottle" alt="{{wine.name}} Image" />
+        </div>
+      </md-card-content>
+    </md-card>
+
+  </md-content>
